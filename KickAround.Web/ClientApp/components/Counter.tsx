@@ -1,14 +1,20 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router';
+import { observer } from 'mobx-react';
+import { observable } from 'mobx';
 
 interface CounterState {
     currentCount: number;
 }
 
+@observer
 export class Counter extends React.Component<RouteComponentProps<{}>, CounterState> {
+    @observable public count: number;
+
     constructor() {
         super();
         this.state = { currentCount: 0 };
+        this.count = 3;
     }
 
     public render() {
