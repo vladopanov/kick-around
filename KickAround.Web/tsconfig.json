@@ -10,6 +10,7 @@
     "strict": true,
     "types": [ "webpack-env" ],
     "experimentalDecorators": true,
+    "importHelpers": true,
     "lib": [
       "es6",
       "dom"
