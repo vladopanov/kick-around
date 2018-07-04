@@ -1,18 +1,24 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router';
-import { observer } from 'mobx-react';
+import { observer, inject } from 'mobx-react';
 import { observable } from 'mobx';
+import { UserStore } from './user/userStore';
 
-interface CounterState {
+interface ICounterProps {
+    userStore: UserStore;
+}
+
+interface ICounterState {
     currentCount: number;
 }
 
+@inject('userStore')
 @observer
-export class Counter extends React.Component<RouteComponentProps<{}>, CounterState> {
+export class Counter extends React.Component<RouteComponentProps<{}> & ICounterProps, ICounterState> {
     @observable public count: number;
 
-    constructor() {
-        super();
+    constructor(props: RouteComponentProps<{}> & ICounterProps) {
+        super(props);
         this.state = { currentCount: 0 };
         this.count = 3;
     }
@@ -20,6 +26,7 @@ export class Counter extends React.Component<RouteComponentProps<{}>, CounterSta
     public render() {
         return <div>
             <h1>Counter</h1>
+            <h2>{this.props.userStore.userName}</h2>
 
             <p>This is a simple example of a React component.</p>
 
