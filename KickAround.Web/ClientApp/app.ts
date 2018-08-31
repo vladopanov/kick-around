@@ -1,4 +1,5 @@
-﻿import { UserStore } from './features';
+import { UserStore } from './features';
+import 'babel-polyfill';
 
 export class App {
     public services: {};
