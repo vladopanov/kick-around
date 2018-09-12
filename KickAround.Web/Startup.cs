@@ -48,6 +48,13 @@ namespace KickAround.Web
                     HotModuleReplacement = true,
                     ReactHotModuleReplacement = true
                 });
+
+                // Seed the database
+                using (var scope = app.ApplicationServices.CreateScope())
+                {
+                    var seeder = scope.ServiceProvider.GetService<KickAroundSeeder>();
+                    seeder.Seed();
+                }
             }
             else
             {
@@ -66,16 +73,6 @@ namespace KickAround.Web
                 //    name: "spa-fallback",
                 //    defaults: new { controller = "Home", action = "Index" });
             });
-
-            if (env.IsDevelopment())
-            {
-                // Seed the database
-                using (var scope = app.ApplicationServices.CreateScope())
-                {
-                    var seeder = scope.ServiceProvider.GetService<KickAroundSeeder>();
-                    seeder.Seed();
-                }
-            }
         }
     }
 }

@@ -31,8 +31,8 @@ export class FetchData extends React.Component<RouteComponentProps<{}>, FetchDat
         </table>;
     }
 
-    constructor() {
-        super();
+    constructor(props: any) {
+        super(props);
         this.state = { forecasts: [], loading: true };
 
         fetch('api/SampleData/WeatherForecasts')

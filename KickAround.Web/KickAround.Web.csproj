@@ -23,9 +23,21 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\app.ts" />
+    <None Remove="ClientApp\features\index.ts" />
+    <None Remove="ClientApp\features\user\userStore.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\KickAround.Data\KickAround.Data.csproj" />
     <ProjectReference Include="..\KickAround.Models\KickAround.Models.csproj" />
     <ProjectReference Include="..\KickAround.Services\KickAround.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\features\index.ts" />
+    <TypeScriptCompile Include="ClientApp\features\user\userStore.ts" />
+    <TypeScriptCompile Include="ClientApp\app.ts" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">
